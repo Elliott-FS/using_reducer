@@ -2,6 +2,17 @@
 # First time using Vite, I was wanting to also practice some useReducer and CSS
 # this is just a practice file overall wanted to try some new things
 
+# Notes:
+useReducer is a react hook used for handling more complex state managment.
+Basic setup: const [state, dispatch] = useReducer(reducer, STATE).
+state is base state when page is loaded, dispatch is the action performed on state.
+useReducer() takes in a reducer function and initial state variable.
+
+
+
+
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

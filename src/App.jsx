@@ -1,4 +1,5 @@
-import { useState, useRecuder, useReducer} from 'react'
+import { useState, useReducer} from 'react';
+import "./styles.css";
 
 const ACTIONS = {
   INCREMENT: 'increment',
@@ -29,11 +30,11 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className="counter">
       <button onClick={decrement}>-</button>
       <span>{state.count}</span>
       <button onClick={increment}>+</button>
-    </>
+    </div>
   )
 }
 
