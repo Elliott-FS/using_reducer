@@ -1,6 +1,8 @@
 # React + Vite
 # First time using Vite, I was wanting to also practice some useReducer and CSS
 # this is just a practice file overall wanted to try some new things
+# run nvm install node to turn on node 21
+# run npm run dev to start server
 
 # Notes:
 useReducer is a react hook used for handling more complex state managment.
