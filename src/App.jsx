@@ -2,48 +2,41 @@ import { useState, useReducer} from 'react';
 import "./styles.css";
 
 const ACTIONS = {
-  INCREMENT: 'increment',
-  DECREMENT: 'decrement',
-  CLEAR: 'clear',
+  ADD_TODO: 'add-todo'
+ 
 }
 
-function reducer(state, action){
+function reducer(todos, action){
   switch (action.type){
-    case ACTIONS.INCREMENT: 
-      return {count: state.count + 1}
-    case ACTIONS.DECREMENT:
-      return {count: state.count - 1}
-    case  ACTIONS.CLEAR:
-      return {count: 0}
-    default:
-      return state;
-
+    case ACTIONS.ADD_TODO:
+      return [...todos, newTodo(action.payload.name)]
   }
+ 
 }
 
+function newTodo(name){
+  return {id: Date.now(), name: name, complete: false}
+
+}
 
 export default function App() {
   // const [count, setCount] = useState(0)
-  const [state, dispatch ] = useReducer(reducer,{count: 0})
-  function Increment(){
-    dispatch({type: ACTIONS.INCREMENT});
+  const [todos, dispatch ] = useReducer(reducer,[])
+  const [name, setName] = useState("")
+
+  function handleSubmit(e){
+    e.preventDefault()
+    dispatch({type: ACTIONS.ADD_TODO, payload:{name: name}});
+    setName('')
   }
 
-  function Decrement(){
-    dispatch({type: ACTIONS.DECREMENT})
-  }
-
-  function Clear(){
-    dispatch({type: ACTIONS.CLEAR})
-  }
+  
+  
   return (
-    <div className='background'>
-      <div className="counter">
-        <h2>{state.count}</h2>
-        <button onClick={Increment}> Increment +</button>
-        <button onClick={Decrement}>Decrement -</button>
-        <button onClick={Clear}>Clear</button>
-      </div>
+    <div className="background">
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={name} onChange={e => setName(e.target.value)}/>
+      </form>
     </div>
 
   )
